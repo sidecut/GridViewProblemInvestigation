@@ -37,9 +37,14 @@
         </li>
     </ol>
     <p>
-        <asp:GridView ID="GridView1" runat="server" OnRowEditing="GridView1_RowEditing">
+        <asp:GridView ID="GridView1" runat="server" OnRowEditing="GridView1_RowEditing" OnRowCommand="GridView1_RowCommand">
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton runat="server" ID="editLink" CommandName="edit-weight" Text="[edit]" />
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
     </p>

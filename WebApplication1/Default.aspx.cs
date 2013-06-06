@@ -1,27 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.DataAccess;
 
 namespace WebApplication1
 {
     public partial class _Default : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        private const string EDIT_WEIGHT_COMMAND_NAME = "edit-weight";
+        private readonly IPeopleDataContext _peopleDataContext;
+
+        public _Default() : this(new FakePeopleDataContext())
         {
-            var people = GetData();
-            GridView1.DataSource = people;
-            GridView1.DataBind();
         }
 
-        private IEnumerable<Person> GetData()
+        public _Default(IPeopleDataContext peopleDataContext)
         {
-            yield return new Person {FirstName = "Fred", LastName = "Flintstone", ZipCode = "10001"};
-            yield return new Person {FirstName = "Wilma", LastName = "Flintstone", ZipCode = "10001"};
-            yield return new Person {FirstName = "Barney", LastName = "Rubble", ZipCode = "10002"};
-            yield return new Person {FirstName = "Betty", LastName = "Rubble", ZipCode = "10002"};
+            _peopleDataContext = peopleDataContext;
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            GridView1.DataSource = _peopleDataContext.People;
+            GridView1.DataBind();
         }
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
@@ -29,12 +30,14 @@ namespace WebApplication1
             Trace.Write(string.Format("GridView1_RowEditing: {0}", e.NewEditIndex));
             e.Cancel = true;
         }
-    }
 
-    public class Person
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string ZipCode { get; set; }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == EDIT_WEIGHT_COMMAND_NAME)
+            {
+                // Update this row with some new, predictable data
+                _peopleDataContext.IncrementPersonSalary(e.CommandArgument.ToString());
+            }
+        }
     }
 }
