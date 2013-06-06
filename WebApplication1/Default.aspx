@@ -36,4 +36,11 @@
             <a href="http://go.microsoft.com/fwlink/?LinkId=245143">Learn more…</a>
         </li>
     </ol>
+    <p>
+        <asp:GridView ID="GridView1" runat="server">
+            <Columns>
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+            </Columns>
+        </asp:GridView>
+    </p>
 </asp:Content>
