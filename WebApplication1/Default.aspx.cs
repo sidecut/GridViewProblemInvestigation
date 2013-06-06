@@ -23,6 +23,11 @@ namespace WebApplication1
             yield return new Person {FirstName = "Barney", LastName = "Rubble", ZipCode = "10002"};
             yield return new Person {FirstName = "Betty", LastName = "Rubble", ZipCode = "10002"};
         }
+
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            Trace.Write(string.Format("GridView1_RowEditing: {0}", e.NewEditIndex));
+        }
     }
 
     public class Person
