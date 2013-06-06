@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Optimization;
@@ -17,6 +18,8 @@ namespace WebApplication1
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Trace.Listeners.Add(new DefaultTraceListener());
         }
 
         void Application_End(object sender, EventArgs e)
