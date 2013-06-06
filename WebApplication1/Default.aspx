@@ -39,7 +39,7 @@
     <p>
         <asp:GridView ID="GridView1" runat="server" OnRowEditing="GridView1_RowEditing">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                <asp:CommandField ShowDeleteButton="True" />
             </Columns>
         </asp:GridView>
     </p>
