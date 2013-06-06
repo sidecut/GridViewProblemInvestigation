@@ -296,6 +296,7 @@
     <Compile Include="DataAccess\GenericFakeDbSet.cs" />
     <Compile Include="DataAccess\IPeopleDataContext.cs" />
     <Compile Include="DataAccess\PeopleDataContext.cs" />
+    <Compile Include="DataAccess\PeopleDataContextFactory.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

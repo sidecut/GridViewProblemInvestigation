@@ -10,7 +10,7 @@ namespace WebApplication1
         private const string EDIT_WEIGHT_COMMAND_NAME = "edit-weight";
         private readonly IPeopleDataContext _peopleDataContext;
 
-        public _Default() : this(new FakePeopleDataContext())
+        public _Default() : this(PeopleDataContextFactory.GetPeopleDataContext())
         {
         }
 
@@ -20,6 +20,14 @@ namespace WebApplication1
         }
 
         protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindGridViewData();
+            }
+        }
+
+        private void BindGridViewData()
         {
             GridView1.DataSource = _peopleDataContext.People;
             GridView1.DataBind();
@@ -38,6 +46,8 @@ namespace WebApplication1
                 // Update this row with some new, predictable data
                 int personId = Convert.ToInt32(e.CommandArgument);
                 _peopleDataContext.IncrementPersonSalary(personId);
+
+                BindGridViewData();
             }
         }
     }
