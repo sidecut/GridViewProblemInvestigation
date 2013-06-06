@@ -36,7 +36,8 @@ namespace WebApplication1
             if (e.CommandName == EDIT_WEIGHT_COMMAND_NAME)
             {
                 // Update this row with some new, predictable data
-                _peopleDataContext.IncrementPersonSalary(e.CommandArgument.ToString());
+                int personId = Convert.ToInt32(e.CommandArgument);
+                _peopleDataContext.IncrementPersonSalary(personId);
             }
         }
     }

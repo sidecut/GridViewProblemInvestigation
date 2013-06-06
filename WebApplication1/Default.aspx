@@ -42,7 +42,8 @@
                 <asp:CommandField ShowDeleteButton="True" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:LinkButton runat="server" ID="editLink" CommandName="edit-weight" Text="[edit]" />
+                        <%# DataBinder.Eval(Container.DataItem, "Id") %>
+                        <asp:LinkButton runat="server" ID="editLink" CommandName="edit-weight" Text="[edit]" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Id") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

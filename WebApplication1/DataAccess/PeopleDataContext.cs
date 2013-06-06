@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using WebApplication1.Domain;
 
 namespace WebApplication1.DataAccess
@@ -11,9 +12,18 @@ namespace WebApplication1.DataAccess
         }
 
         public IDbSet<Person> People { get; private set; }
-        public void IncrementPersonSalary(string personId)
+
+        public void IncrementPersonSalary(int personId)
         {
-            throw new System.NotImplementedException();
+            var person = People.Find(personId);
+            if (person != null)
+            {
+                person.Salary += 1000;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("personId", personId, "person not in the list");
+            }
         }
     }
 }

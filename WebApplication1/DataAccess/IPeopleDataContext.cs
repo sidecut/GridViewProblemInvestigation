@@ -7,6 +7,6 @@ namespace WebApplication1.DataAccess
     {
         IDbSet<Person> People { get; }
 
-        void IncrementPersonSalary(string personId);
+        void IncrementPersonSalary(int personId);
     }
 }
