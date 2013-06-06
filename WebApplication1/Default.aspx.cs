@@ -27,6 +27,7 @@ namespace WebApplication1
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             Trace.Write(string.Format("GridView1_RowEditing: {0}", e.NewEditIndex));
+            e.Cancel = true;
         }
     }
 
