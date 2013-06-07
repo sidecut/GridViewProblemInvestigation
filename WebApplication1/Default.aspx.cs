@@ -11,9 +11,9 @@ namespace WebApplication1
         {
         }
 
-        public override void DataBind()
+        protected override void OnPreRender(EventArgs e)
         {
-            base.DataBind();
+            base.OnPreRender(e);
 
             if (!IsPostBack)
             {
