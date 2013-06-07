@@ -11,9 +11,9 @@ namespace WebApplication1
         {
         }
 
-        protected override void DataBindChildren()
+        protected override void DataBind(bool raiseOnDataBinding)
         {
-            base.DataBindChildren();
+            base.DataBind(raiseOnDataBinding);
 
             if (!IsPostBack)
             {
