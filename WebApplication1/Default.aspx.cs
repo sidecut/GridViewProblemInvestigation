@@ -29,6 +29,11 @@ namespace WebApplication1
         {
             Trace.Write(string.Format("GridView1_RowEditing: {0}", e.NewEditIndex));
         }
+
+        protected void GridView1_DataBinding(object sender, EventArgs e)
+        {
+            Trace.Write("GridView1_DataBinding");
+        }
     }
 
     public class Person

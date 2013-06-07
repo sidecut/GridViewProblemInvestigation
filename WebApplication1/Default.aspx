@@ -37,7 +37,7 @@
         </li>
     </ol>
     <p>
-        <asp:GridView ID="GridView1" runat="server" OnRowEditing="GridView1_RowEditing">
+        <asp:GridView ID="GridView1" runat="server" OnRowEditing="GridView1_RowEditing" OnDataBinding="GridView1_DataBinding">
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             </Columns>
