@@ -34,6 +34,7 @@ namespace WebApplication1
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             Trace.Write(string.Format("GridView1_RowEditing: {0}", e.NewEditIndex));
+            GridView1.EditIndex = e.NewEditIndex;
         }
 
         protected void GridView1_DataBinding(object sender, EventArgs e)
