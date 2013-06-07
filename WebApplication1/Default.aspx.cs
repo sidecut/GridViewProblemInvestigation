@@ -13,7 +13,7 @@ namespace WebApplication1
             {
                 var people = GetData();
                 GridView1.DataSource = people;
-                //GridView1.DataBind();
+                GridView1.DataBind();
             }
         }
 
