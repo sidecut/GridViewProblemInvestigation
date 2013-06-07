@@ -11,17 +11,6 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var people = GetData();
-            GridView1.DataSource = people;
-            GridView1.DataBind();
-        }
-
-        private IEnumerable<Person> GetData()
-        {
-            yield return new Person {FirstName = "Fred", LastName = "Flintstone", ZipCode = "10001"};
-            yield return new Person {FirstName = "Wilma", LastName = "Flintstone", ZipCode = "10001"};
-            yield return new Person {FirstName = "Barney", LastName = "Rubble", ZipCode = "10002"};
-            yield return new Person {FirstName = "Betty", LastName = "Rubble", ZipCode = "10002"};
         }
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
@@ -35,5 +24,28 @@ namespace WebApplication1
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ZipCode { get; set; }
+    }
+
+    public class PersonList
+    {
+        readonly List<Person> _people = new List<Person>(); 
+
+        public PersonList()
+        {
+            _people.AddRange(GetData());
+        }
+
+        public IEnumerable<Person> GetPeople()
+        {
+            return _people;
+        } 
+
+        private IEnumerable<Person> GetData()
+        {
+            yield return new Person {FirstName = "Fred", LastName = "Flintstone", ZipCode = "10001"};
+            yield return new Person {FirstName = "Wilma", LastName = "Flintstone", ZipCode = "10001"};
+            yield return new Person {FirstName = "Barney", LastName = "Rubble", ZipCode = "10002"};
+            yield return new Person {FirstName = "Betty", LastName = "Rubble", ZipCode = "10002"};
+        }
     }
 }
