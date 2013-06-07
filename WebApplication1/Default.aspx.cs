@@ -11,9 +11,7 @@ namespace WebApplication1
         {
             if (!IsPostBack)
             {
-                var people = GetData();
-                GridView1.DataSource = people;
-                GridView1.DataBind();
+                BindData();
             }
         }
 
@@ -29,6 +27,14 @@ namespace WebApplication1
         {
             Trace.Write(string.Format("GridView1_RowEditing: {0}", e.NewEditIndex));
             GridView1.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+
+        private void BindData()
+        {
+            var people = GetData();
+            GridView1.DataSource = people;
+            GridView1.DataBind();
         }
 
         protected void GridView1_DataBinding(object sender, EventArgs e)
