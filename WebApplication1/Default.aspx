@@ -37,15 +37,10 @@
         </li>
     </ol>
     <p>
-        <asp:GridView ID="GridView1" runat="server" OnRowEditing="GridView1_RowEditing" AutoGenerateColumns="False" DataSourceID="ObjectDataSource2">
+        <asp:GridView ID="GridView1" runat="server" OnRowEditing="GridView1_RowEditing">
             <Columns>
-                <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
-                <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
-                <asp:BoundField DataField="ZipCode" HeaderText="ZipCode" SortExpression="ZipCode" />
-                <asp:CommandField ShowEditButton="True" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             </Columns>
         </asp:GridView>
-        <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="GetPeople" TypeName="WebApplication1.PersonList"></asp:ObjectDataSource>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"></asp:ObjectDataSource>
     </p>
 </asp:Content>
